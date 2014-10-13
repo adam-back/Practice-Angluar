@@ -14,10 +14,14 @@
     <form name="loginForm" ng-submit='submitForm(loginForm.$valid)' novalidate ng-controlled='mainController'>
       <label>Username</label>
       <input name='username' type="text" ng-minlength='5' ng-maxlength='20' ng-model='username' required>
+      <p ng-show="loginForm.username.$error.minlength && !loginForm.username.$pristine">Username is too short</p>
+      <p ng-show="loginForm.username.$error.maxlength && !loginForm.username.$pristine">Username is too long</p>
 
       <label>Password</label>
       <input name='password' type="password" ng-minlength='6' ng-maxlength='40' ng-model='password' required>
-    
+      <p ng-show="loginForm.password.$error.minlength && !loginForm.password.$pristine">Password is too short</p>
+      <p ng-show="loginForm.password.$error.maxlength && !loginForm.password.$pristine">Password is too long</p>
+
       <button type="submit" ng-disabled='loginForm.$invalid'>Log In</button>
     </form>
 </body>
