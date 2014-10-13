@@ -11,14 +11,14 @@
     <input type="text" ng-model="name" placeholder='Type your name'>
     <p>Hi, {{ name }}!</p>
 
-    <form name="loginForm" ng-submit='submitForm(loginForm.$valid)' novalidate>
+    <form name="loginForm" ng-submit='submitForm(loginForm.$valid)' novalidate ng-controlled='mainController'>
       <label>Username</label>
-      <input name='username' type="text" ng-minlength='5' ng-maxlength='20'>
+      <input name='username' type="text" ng-minlength='5' ng-maxlength='20' ng-model='username' required>
 
       <label>Password</label>
-      <input name='password' type="password" ng-minlength='6' ng-maxlength='40'>
+      <input name='password' type="password" ng-minlength='6' ng-maxlength='40' ng-model='password' required>
     
-      <button type="submit">Log In</button>
+      <button type="submit" ng-disabled='loginForm.$invalid'>Log In</button>
     </form>
 </body>
 </html>
